@@ -1,0 +1,41 @@
+@model List<WebApplication1.Models.Student>
+@{
+    ViewData["Title"] = "لیست";
+}
+<a href="/Student/Create" class="btn btn-warning btn-sm">افزودن</a>
+<table class="table">
+    <thead>
+
+        <tr>
+            <th>#</th>
+            <th>نام </th>
+            <th>نام خانوادگی </th>
+            <th>درس</th>
+            <th>نمره</th>
+            <th>ابزار</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 1;
+        }
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@count</td>
+                <td>@student.Name</td>
+                <td>@student.Family</td>
+                <td>@student.Lesson</td>
+                <td>@student.Grade</td>
+                 <td>
+        <a href="/Student/Edit?ID=@student.ID" class="btn btn-warning btn-sm">ویرایش</a>
+
+                  <a href="/Student/Delete?ID=@student.ID" class="btn btn-warning btn-sm">حذف</a>
+
+             
+                 </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
